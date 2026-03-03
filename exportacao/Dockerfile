@@ -10,7 +10,7 @@ WORKDIR /app
 COPY dags/utils/utils.R .
 
 # Copia o script
-COPY dags/base_x/exportacao/ .
+COPY dags/dag_template/exportacao/ .
 
 # Executa
 CMD ["Rscript", "exportacao.R"]

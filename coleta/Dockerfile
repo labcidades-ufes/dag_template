@@ -10,7 +10,7 @@ WORKDIR /app
 COPY dags/utils/utils.R .
 
 # Copia a pasta de coleta
-COPY dags/base_x/coleta/ .
+COPY dags/dag_template/coleta/ .
 
 # Executa
 CMD ["Rscript", "coleta.R"]

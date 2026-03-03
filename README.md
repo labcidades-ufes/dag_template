@@ -9,7 +9,7 @@ Template base para pipelines de dados em camadas, com etapas separadas por respo
 - `processamento/`: aplica regras finais e agregações para gerar a camada gold.
 - `exportacao/`: consome a gold e gera saídas finais (ex.: visualização PNG).
 - `utils.R`: funções compartilhadas para leitura/escrita de dados no MinIO via DuckDB.
-- `base_x.py`: script auxiliar para criação de uma DAG no Airflow.
+- `dag_template.py`: script auxiliar para criação de uma DAG no Airflow.
 
 ## Fluxo base do pipeline
 

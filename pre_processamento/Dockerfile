@@ -10,7 +10,7 @@ WORKDIR /app
 COPY dags/utils/utils.R .
 
 # Copia o script
-COPY dags/base_x/pre_processamento/ .
+COPY dags/dag_template/pre_processamento/ .
 
 # Executa
 CMD ["Rscript", "pre_processamento.R"]

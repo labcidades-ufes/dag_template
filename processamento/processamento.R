@@ -65,7 +65,7 @@ save_data <- function(data) {
   
   tryCatch({
     timestamp <- format(Sys.time(), "%Y%m%d")
-    filepath <- sprintf("gold/base_x/dado/dado_%s.parquet", timestamp)
+    filepath <- sprintf("gold/dag_template/dado/dado_%s.parquet", timestamp)
 
     write_parquet_to_minio(data, filepath)
     
@@ -82,13 +82,13 @@ read_data <- function() {
   cat("[PROCESSAMENTO] Lendo dados do MinIO via DuckDB\n")
   
   tryCatch({
-    data <- read_latest_parquet_from_minio("silver/base_x/dado/")
+    data <- read_latest_parquet_from_minio("silver/dag_template/dado/")
 
     # Ou se preferir ler um arquivo específico:
-    # data <- read_parquet_from_minio("silver/base_x/dado/dado_20240601.parquet")
+    # data <- read_parquet_from_minio("silver/dag_template/dado/dado_20240601.parquet")
 
     if (is.null(data) || nrow(data) == 0) {
-      stop("Nenhum arquivo/dado encontrado em silver/base_x/dado/")
+      stop("Nenhum arquivo/dado encontrado em silver/dag_template/dado/")
     }
 
     cat("[PROCESSAMENTO] Dados lidos com sucesso. Registros:", nrow(data), "\n")

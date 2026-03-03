@@ -71,13 +71,13 @@ read_data <- function() {
   cat("[EXPORTACAO] Lendo dados do MinIO via DuckDB\n")
   
   tryCatch({
-    data <- read_latest_parquet_from_minio("gold/base_x/dado/")
+    data <- read_latest_parquet_from_minio("gold/dag_template/dado/")
 
     # Ou se preferir ler um arquivo específico:
-    # data <- read_parquet_from_minio("gold/base_x/dado/dado_20240601.parquet")
+    # data <- read_parquet_from_minio("gold/dag_template/dado/dado_20240601.parquet")
 
     if (is.null(data) || nrow(data) == 0) {
-      stop("Nenhum arquivo/dado encontrado em gold/base_x/dado/")
+      stop("Nenhum arquivo/dado encontrado em gold/dag_template/dado/")
     }
 
     cat("[EXPORTACAO] Dados lidos com sucesso. Registros:", nrow(data), "\n")

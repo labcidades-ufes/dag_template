@@ -38,7 +38,7 @@ save_data <- function(data) {
   
   tryCatch({
     timestamp <- format(Sys.time(), "%Y%m%d")
-    filepath <- sprintf("bronze/base_x/dado/dado_%s.parquet", timestamp)
+    filepath <- sprintf("bronze/dag_template/dado/dado_%s.parquet", timestamp)
 
     write_parquet_to_minio(data, filepath)
     

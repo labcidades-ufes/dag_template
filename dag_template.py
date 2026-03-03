@@ -17,17 +17,17 @@ docker_network = os.getenv('DOCKER_NETWORK')
 
 # Define o DAG
 with DAG(
-    'base_x',
+    'dag_template',
     default_args=default_args,
     description='DAG para coleta, processamento e visualização da base x',
     schedule='@daily',
     catchup=False,
-    tags=['base_x', 'x', 'tag'],
+    tags=['dag_template', 'x', 'tag'],
 ) as dag:
 
     coleta = DockerOperator(
         task_id='coleta',
-        image='base_x-coleta:latest',
+        image='dag_template-coleta:latest',
         api_version='auto',
         auto_remove='success',
         docker_url='unix://var/run/docker.sock',
@@ -37,7 +37,7 @@ with DAG(
     
     pre_processamento = DockerOperator(
         task_id='pre_processamento',
-        image='base_x-pre_processamento:latest',
+        image='dag_template-pre_processamento:latest',
         api_version='auto',
         auto_remove='success',
         docker_url='unix://var/run/docker.sock',
@@ -47,7 +47,7 @@ with DAG(
 
     processamento = DockerOperator(
         task_id='processamento',
-        image='base_x-processamento:latest',
+        image='dag_template-processamento:latest',
         api_version='auto',
         auto_remove='success',
         docker_url='unix://var/run/docker.sock',
@@ -57,7 +57,7 @@ with DAG(
 
     exportacao = DockerOperator(
         task_id='exportacao',
-        image='base_x-exportacao:latest',
+        image='dag_template-exportacao:latest',
         api_version='auto',
         auto_remove='success',
         docker_url='unix://var/run/docker.sock',
