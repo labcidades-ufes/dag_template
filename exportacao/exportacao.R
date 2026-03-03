@@ -42,25 +42,13 @@ exportacao <- function(){
 }
 
 save_data <- function(local_file) {
-  cat("[EXPORTACAO] Salvando dataviz em disco local\n")
+  cat("[EXPORTACAO] Salvando dataviz\n")
 
   tryCatch({
-    export_dir <- Sys.getenv("EXPORT_DIR", "/tmp/exportacao")
-    if (!dir.exists(export_dir)) {
-      dir.create(export_dir, recursive = TRUE, showWarnings = FALSE)
-    }
+    # Coloque aqui a lógica para salvar o arquivo local_file em um destino final, 
+    # como um arquivo local, uma API, etc.
 
-    output_name <- basename(local_file)
-    output_path <- file.path(export_dir, output_name)
-
-    ok <- file.copy(local_file, output_path, overwrite = TRUE)
-    if (!ok) {
-      stop(sprintf("Falha ao copiar arquivo para %s", output_path))
-    }
-
-    cat("[EXPORTACAO] Dataviz salvo localmente em:", output_path, "\n")
-    return(output_path)
-
+    return(local_file)
   }, error = function(e) {
     cat("[EXPORTACAO] Erro ao salvar arquivo local:", conditionMessage(e), "\n")
     quit(status = 1)
