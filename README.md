@@ -8,6 +8,7 @@ Template base para pipelines de dados em camadas, com etapas separadas por respo
 - `pre_processamento/`: limpa e padroniza os dados da bronze para a camada silver.
 - `processamento/`: aplica regras finais e agregações para gerar a camada gold.
 - `exportacao/`: consome a gold e gera saídas finais (ex.: visualização PNG).
+- `segredos/`: deve conter arquivos e informações que não devem ser compartilhadas, coloque o nome de cada arquivo no .gitignore. Exemplo é a chave ssh para exportação de dados.
 - `utils.R`: funções compartilhadas para leitura/escrita de dados no MinIO via DuckDB.
 - `dag_template.py`: script auxiliar para criação de uma DAG no Airflow.
 
